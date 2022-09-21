@@ -4,4 +4,4 @@ require_once '../config/database.php';
 require_once '../config/blade.php';
 
 /**  @var $blade  */
-echo $blade->make('layout')->render();
+echo $blade->make('index')->render();
