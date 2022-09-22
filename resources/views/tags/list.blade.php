@@ -7,7 +7,8 @@
     <table class="table table-bordered table-hover table-dark">
         <thead>
         <tr>
-            <td colspan="7"  style="text-align: center;"><a href="create.php" style="font-size: 30px; color: #0099FF">&#43;  Create tag  &#43;</a></td>
+            <td colspan="1"  style="text-align: center;"><a href="../" style="font-size: 30px; color: #0099FF">&#11152; back</a></td>
+            <td colspan="6"  style="text-align: center;"><a href="create.php" style="font-size: 30px; color: #0099FF">&#43;  Create tag  &#43;</a></td>
         </tr>
         </thead>
         <thead>
