@@ -27,7 +27,7 @@
         </tbody>
     </table>
     <div class="container mt-4">
-        <form action="" method="POST">
+        <form action="/categories/update" method="POST">
             <input type="hidden" id="id" name="id" value="{{ $category->id }}">
             <div class="form-group">
                 <label for="title">Title</label>

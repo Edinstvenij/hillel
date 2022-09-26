@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <form action="" method="POST">
+        <form action="/tags/store" method="POST">
             <div class="form-group">
                 <label for="title">title</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">

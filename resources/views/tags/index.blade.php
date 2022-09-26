@@ -9,7 +9,7 @@
         <tr>
             <td colspan="1" style="text-align: center;"><a href="../" style="font-size: 30px; color: #0099FF">&#11152;
                     back</a></td>
-            <td colspan="6" style="text-align: center;"><a href="create.php" style="font-size: 30px; color: #0099FF">&#43;
+            <td colspan="6" style="text-align: center;"><a href="tags/create" style="font-size: 30px; color: #0099FF">&#43;
                     Create tag &#43;</a></td>
         </tr>
         </thead>
@@ -32,8 +32,8 @@
                 <td>{{ $tag->slug }}</td>
                 <td>{{ $tag->created_at }}</td>
                 <td>{{ $tag->updated_at }}</td>
-                <td><a href="update.php?id={{ $tag->id }}">&#9999;</a></td>
-                <td><a href="delete.php?id={{ $tag->id }}">&#10060;</a></td>
+                <td><a href="tags/{{ $tag->id }}/edit">&#9999;</a></td>
+                <td><a href="tags/{{ $tag->id }}/delete">&#10060;</a></td>
             </tr>
         @endforeach
         </tbody>
