@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $category->title = $_POST['title'];
     $category->slug = $_POST['slug'];
     $category->save();
-    header('Location:index.php');
+    header('Location:index2.php');
 
 } else if (empty($_GET['id'])) {
     throw new InvalidArgumentException('Error get parameter');

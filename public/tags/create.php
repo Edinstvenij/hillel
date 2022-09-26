@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tag->title = $_POST['title'];
     $tag->slug = $_POST['slug'];
     $tag->save();
-    header('Location:index.php');
+    header('Location:index2.php');
 
 }
 

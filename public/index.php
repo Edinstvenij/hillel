@@ -2,6 +2,13 @@
 require_once '../vendor/autoload.php';
 require_once '../config/database.php';
 require_once '../config/blade.php';
+require_once '../config/router.php';
 
-/**  @var $blade */
-echo $blade->make('index')->render();
+
+/**
+ * @var \Illuminate\Routing\Router $router
+ * @var \Illuminate\Http\Request $request
+ */
+
+$responce = $router->dispatch($request);
+echo $responce->getContent();

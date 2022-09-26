@@ -11,4 +11,4 @@ require_once '../../config/blade.php';
 
 $category = \Hillel\Model\Tag::find($_GET['id']);
 $category->delete();
-header('Location:index.php');
+header('Location:index2.php');
