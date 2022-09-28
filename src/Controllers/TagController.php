@@ -7,14 +7,24 @@ use Hillel\Model\Tag;
 
 class TagController
 {
+    private function autoValidator(array $arrSettings)
+    {
+        $data = request()->all();
+        $validator = validator()->make($data, $arrSettings);
+        if ($validator->fails()) {
+            $_SESSION['data'] = $data;
+            $_SESSION['errors'] = $validator->errors()->toArray();
+            return new RedirectResponse($_SERVER['HTTP_REFERER']);
+
+        }
+        return $data;
+    }
+
+
     public function index()
     {
         $tags = Tag::all();
         return view('tags/index', compact('tags'));
-    }
-
-    public function show($id)
-    {
     }
 
     public function create()
@@ -25,12 +35,24 @@ class TagController
 
     public function store()
     {
+        //  Custom validator
+        $data = $this->autoValidator([
+            'title' => ['required', 'min:2'],
+            'slug' => ['required', 'min:2'],
+        ]);
+        if (!is_array($data)) {
+            return $data;
+        }
+
+
         $request = request();
         $tag = new Tag();
 
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        $tag->title = $data['title'];
+        $tag->slug = $data['slug'];
         $tag->save();
+
+        $_SESSION['success'] = 'Запись Успешно добавлена';
         return new RedirectResponse('/tags');
     }
 
@@ -42,11 +64,20 @@ class TagController
 
     public function update()
     {
-        $request = request();
-        $tag = Tag::find($request->input('id'));
-        $tag->title = $request->input('title');
-        $tag->slug = $request->input('slug');
+        $data = $this->autoValidator([
+            'title' => ['required', 'min:2'],
+            'slug' => ['required', 'min:2'],
+        ]);
+        if (!is_array($data)) {
+            return $data;
+        }
+
+        $tag = Tag::find($data['id']);
+        $tag->title = $data['title'];
+        $tag->slug = $data['slug'];
         $tag->save();
+
+        $_SESSION['success'] = 'Запись Успешно обновлена';
         return new RedirectResponse('/tags');
     }
 

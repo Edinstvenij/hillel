@@ -4,6 +4,14 @@
     list tags
 @endsection
 @section('content')
+    @isset($_SESSION['success'])
+        <div class="alert alert-info" role="alert">
+            {{   $_SESSION['success']  }}
+        </div>
+        @php
+            unset($_SESSION['success']);
+        @endphp
+    @endisset
     <table class="table table-bordered table-hover table-dark">
         <thead>
         <tr>
