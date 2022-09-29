@@ -56,22 +56,12 @@
                 @endisset
             </div>
             <div class="mt-4 form-floating">
-                <select class="form-select" id="floatingSelect" name="postId[]" style="height: 150px" multiple>
-                    @foreach($posts as $post)
-                        <option @foreach($postsCheck as $postCheck)
-                                    {{  $postCheck->id == $post->id ? 'selected' : ''  }}
-                                @endforeach
-                                value="{{ $post->id }}">{{ $post->title }}</option>
+                <select class="form-select" id="floatingSelect" style="height: 80px;" name="categoryId[]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->title }}</option>
                     @endforeach
                 </select>
-                <label for="floatingSelect">Select post(s) + ctrl</label>
-                @isset($_SESSION['errors']['postId'])
-                    @foreach($_SESSION['errors']['postId'] as $error)
-                        <div class="alert alert-danger" role="alert">
-                            {{   $error  }}
-                        </div>
-                    @endforeach
-                @endisset
+                <label for="floatingSelect">Select category</label>
             </div>
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
         </form>

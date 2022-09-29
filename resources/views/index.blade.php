@@ -10,6 +10,9 @@
         <div class="container-fluid">
             <a class="navbar-brand" style="width: 100%" href="/tags">Tags</a>
         </div>
+        <div class="container-fluid">
+            <a class="navbar-brand" style="width: 100%" href="/posts">Posts</a>
+        </div>
     </nav>
 
 @endsection

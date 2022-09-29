@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Http\Request;
 use Hillel\Controllers\CategoryController;
 use Hillel\Controllers\TagController;
+use Hillel\Controllers\PostController;
 
 $request = Request::createFromGlobals();
 
@@ -45,13 +46,10 @@ $router->get('/tags/{id}/edit', [TagController::class, 'edit']);
 $router->post('/tags/update', [TagController::class, 'update']);
 $router->get('/tags/{id}/delete', [TagController::class, 'destroy']);
 
-
-//$router->get('/contact', [PageController::class, 'contact']);
-//
-//$router->get('/order', [OrderController::class, 'index']);
-//$router->get('/order/{id}/show', [OrderController::class, 'show']);
-//$router->get('/order/create', [OrderController::class, 'create']);
-//$router->post('/order/store', [OrderController::class, 'store']);
-//$router->get('/order/{id}/edit', [OrderController::class, 'edit']);
-//$router->post('/order/update', [OrderController::class, 'update']);
-//$router->get('/order/{id}/delete', [OrderController::class, 'destroy']);
+//  Posts
+$router->get('/posts', [PostController::class, 'index']);
+$router->get('/posts/create', [PostController::class, 'create']);
+$router->post('/posts/store', [PostController::class, 'store']);
+$router->get('/posts/{id}/edit', [PostController::class, 'edit']);
+$router->post('/posts/update', [PostController::class, 'update']);
+$router->get('/posts/{id}/delete', [PostController::class, 'destroy']);
