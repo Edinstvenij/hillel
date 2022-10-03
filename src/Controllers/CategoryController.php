@@ -65,7 +65,7 @@ class CategoryController
         $category = Category::find($id);
         $postsCheck = $category->posts()->where('category_id', $category->id)->get();
         $posts = Post::all();
-        return view('categories/update', compact('category','postsCheck', 'posts'));
+        return view('categories/update', compact('category', 'postsCheck', 'posts'));
     }
 
     public function update()
@@ -101,5 +101,19 @@ class CategoryController
         $category = Category::find($id);
         $category->delete();
         return new RedirectResponse('/categories');
+    }
+
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        return view('categories/index', compact('categories'));
+    }
+
+    public function restore($id)
+    {
+        Category::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/categories/trash');
     }
 }

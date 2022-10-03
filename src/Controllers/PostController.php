@@ -104,5 +104,19 @@ class PostController
         $post->delete();
         return new RedirectResponse('/posts');
     }
+
+    public function trash()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view('posts/index', compact('posts'));
+    }
+
+    public function restore($id)
+    {
+        Post::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/posts/trash');
+    }
 }
 

@@ -16,7 +16,8 @@
         <thead>
         <tr>
             <td colspan="1" style="text-align: center;"><a href="../" style="font-size: 30px; color: #0099FF">&#11152; back</a></td>
-            <td colspan="7" style="text-align: center;"><a href="/categories/create" style="font-size: 30px; color: #0099FF">&#43; Create Category &#43;</a></td>
+            <td colspan="6" style="text-align: center;"><a href="/categories/create" style="font-size: 30px; color: #0099FF">&#43; Create Category &#43;</a></td>
+            <td colspan="1" style="text-align: center;"><a href="/categories/trash" style="font-size: 30px; color: #6a6a6a">Trash</a></td>
         </tr>
         </thead>
         <thead>
@@ -27,7 +28,11 @@
             <th scope="col">post name</th>
             <th scope="col">created_at</th>
             <th scope="col">updated_at</th>
-            <th scope="col">update</th>
+            @if($_SERVER['REQUEST_URI'] == '/categories/')
+                <th scope="col">update</th>
+            @else
+                <th scope="col">restore</th>
+            @endif
             <th scope="col">delete</th>
         </tr>
         </thead>
@@ -42,7 +47,11 @@
                     @endforeach</td>
                 <td>{{ $category->created_at }}</td>
                 <td>{{ $category->updated_at }}</td>
-                <td><a href="{{ $category->id }}/edit">&#9999;</a></td>
+                @if($_SERVER['REQUEST_URI'] == '/categories/')
+                    <td><a href="{{ $category->id }}/edit">&#9999;</a></td>
+                @else
+                    <td><a href="{{ $category->id }}/restore">restore</a></td>
+                @endif
                 <td><a href="{{ $category->id }}/delete">&#10060;</a></td>
             </tr>
         @endforeach

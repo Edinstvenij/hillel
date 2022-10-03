@@ -87,4 +87,18 @@ class TagController
         $tag->delete();
         return new RedirectResponse('/tags');
     }
+
+    public function trash()
+    {
+        $tags = Tag::onlyTrashed()->get();
+        return view('tags/index', compact('tags'));
+    }
+
+    public function restore($id)
+    {
+        Tag::withTrashed()
+            ->where('id', $id)
+            ->restore();
+        return new RedirectResponse('/tags/trash');
+    }
 }

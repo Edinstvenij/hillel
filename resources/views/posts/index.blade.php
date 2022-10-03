@@ -16,7 +16,9 @@
         <thead>
         <tr>
             <td colspan="2" style="text-align: center;"><a href="../" style="font-size: 30px; color: #0099FF">&#11152; back</a></td>
-            <td colspan="8" style="text-align: center;"><a href="posts/create" style="font-size: 30px; color: #0099FF">&#43; Create posts &#43;</a></td>
+            <td colspan="7" style="text-align: center;"><a href="posts/create" style="font-size: 30px; color: #0099FF">&#43; Create posts &#43;</a></td>
+            <td colspan="1" style="text-align: center;"><a href="/posts/trash" style="font-size: 30px; color: #6a6a6a">Trash</a></td>
+
         </tr>
         </thead>
         <thead>
@@ -29,7 +31,11 @@
             <th scope="col">tag title</th>
             <th scope="col">created_at</th>
             <th scope="col">updated_at</th>
-            <th scope="col">update</th>
+            @if($_SERVER['REQUEST_URI'] == '/posts')
+                <th scope="col">update</th>
+            @else
+                <th scope="col">restore</th>
+            @endif
             <th scope="col">delete</th>
         </tr>
         </thead>
@@ -44,7 +50,12 @@
                 <td>@foreach($post->tags()->where('post_id', $post->id)->get() as $tag) {{ $tag->title. '; ' }}@endforeach</td>
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->updated_at }}</td>
-                <td><a href="posts/{{ $post->id }}/edit">&#9999;</a></td>
+                @if($_SERVER['REQUEST_URI'] == '/posts')
+                    <td><a href="posts/{{ $post->id }}/edit">&#9999;</a></td>
+                @else
+                    <td><a href="{{ $post->id }}/restore">restore</a></td>
+                @endif
+
                 <td><a href="posts/{{ $post->id }}/delete">&#10060;</a></td>
             </tr>
     @endforeach
