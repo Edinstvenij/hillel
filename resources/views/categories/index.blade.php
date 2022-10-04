@@ -52,7 +52,11 @@
                 @else
                     <td><a href="{{ $category->id }}/restore">restore</a></td>
                 @endif
-                <td><a href="{{ $category->id }}/delete">&#10060;</a></td>
+                @if($_SERVER['REQUEST_URI'] == '/categories/')
+                    <td><a href="{{ $category->id }}/delete">&#10060;</a></td>
+                @else
+                    <td><a href="{{ $category->id }}/force-delete">&#10060;</a></td>
+                @endif
             </tr>
         @endforeach
         </tbody>

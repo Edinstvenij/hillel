@@ -116,4 +116,13 @@ class CategoryController
             ->restore();
         return new RedirectResponse('/categories/trash');
     }
+
+    public function forceDelete($id)
+    {
+        Category::onlyTrashed()
+            ->where('id', $id)
+            ->forceDelete();
+        return new RedirectResponse('/categories/trash');
+    }
+
 }

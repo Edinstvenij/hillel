@@ -101,4 +101,13 @@ class TagController
             ->restore();
         return new RedirectResponse('/tags/trash');
     }
+
+    public function forceDelete($id)
+    {
+        Tag::onlyTrashed()
+            ->where('id', $id)
+            ->forceDelete();
+        return new RedirectResponse('/tags/trash');
+    }
+
 }

@@ -91,7 +91,7 @@ class PostController
         $post->save();
 
         if (!empty($data['tagId'])) {
-                $post->tags()->sync($data['tagId']);
+            $post->tags()->sync($data['tagId']);
         }
 
         $_SESSION['success'] = 'Запись Успешно обновлена';
@@ -118,5 +118,14 @@ class PostController
             ->restore();
         return new RedirectResponse('/posts/trash');
     }
+
+    public function forceDelete($id)
+    {
+       $a = Post::onlyTrashed()
+            ->where('id', $id)
+            ->forceDelete();
+        return new RedirectResponse('/posts/trash');
+    }
+
 }
 

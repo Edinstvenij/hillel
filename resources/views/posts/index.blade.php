@@ -55,8 +55,12 @@
                 @else
                     <td><a href="{{ $post->id }}/restore">restore</a></td>
                 @endif
+                @if($_SERVER['REQUEST_URI'] == '/posts')
+                    <td><a href="posts/{{ $post->id }}/delete">&#10060;</a></td>
+                @else
+                    <td><a href="{{ $post->id }}/force-delete">&#10060;</a></td>
+                @endif
 
-                <td><a href="posts/{{ $post->id }}/delete">&#10060;</a></td>
             </tr>
     @endforeach
         </tbody>

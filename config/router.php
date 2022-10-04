@@ -39,6 +39,7 @@ $router->post('/categories/update', [CategoryController::class, 'update']);
 $router->get('/categories/{id}/delete', [CategoryController::class, 'destroy']);
 $router->get('/categories/trash', [CategoryController::class, 'trash']);
 $router->get('/categories/{id}/restore', [CategoryController::class, 'restore']);
+$router->get('/categories/{id}/force-delete', [CategoryController::class, 'forceDelete']);
 
 //  Category
 $router->get('/tags', [TagController::class, 'index']);
@@ -49,6 +50,7 @@ $router->post('/tags/update', [TagController::class, 'update']);
 $router->get('/tags/{id}/delete', [TagController::class, 'destroy']);
 $router->get('/tags/trash', [TagController::class, 'trash']);
 $router->get('/tags/{id}/restore', [TagController::class, 'restore']);
+$router->get('/tags/{id}/force-delete', [TagController::class, 'forceDelete']);
 
 //  Posts
 $router->get('/posts', [PostController::class, 'index']);
@@ -59,4 +61,5 @@ $router->post('/posts/update', [PostController::class, 'update']);
 $router->get('/posts/{id}/delete', [PostController::class, 'destroy']);
 $router->get('/posts/trash', [PostController::class, 'trash']);
 $router->get('/posts/{id}/restore', [PostController::class, 'restore']);
+$router->get('/posts/{id}/force-delete', [PostController::class, 'forceDelete']);
 

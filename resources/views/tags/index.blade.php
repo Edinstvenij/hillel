@@ -49,7 +49,11 @@
                 @else
                     <td><a href="{{ $tag->id }}/restore">restore</a></td>
                 @endif
-                <td><a href="tags/{{ $tag->id }}/delete">&#10060;</a></td>
+                @if($_SERVER['REQUEST_URI'] == '/tags')
+                    <td><a href="tags/{{ $tag->id }}/delete">&#10060;</a></td>
+                @else
+                    <td><a href="{{ $tag->id }}/force-delete">&#10060;</a></td>
+                @endif
             </tr>
         @endforeach
         </tbody>
